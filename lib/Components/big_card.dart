@@ -20,7 +20,7 @@ class BigCard extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Text(
-          pair.asLowerCase,
+          pair.asPascalCase,
           style: style,
           semanticsLabel: "${pair.first} ${pair.second}",
         ),
