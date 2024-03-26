@@ -1,5 +1,6 @@
 import 'package:clothesmatch/Pages/home_page.dart';
 import 'package:english_words/english_words.dart';
+import 'package:clothesmatch/Pages/favorite_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -44,6 +45,15 @@ class MyAppState extends ChangeNotifier {
     }
     notifyListeners();
   }
+
+  Scaffold centerPage(Widget element) {
+    return Scaffold(
+      body: Center(
+          child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+        element,
+      ])),
+    );
+  }
 }
 
 class LandingPage extends StatefulWidget {
@@ -53,20 +63,26 @@ class LandingPage extends StatefulWidget {
 
 class _LandingPageState extends State<LandingPage> {
   var navindex = 0;
-
+  final _pages = [
+    MyHomePage(),
+    FavoritesPage(),
+    Placeholder(),
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Clothesmatch"),
       ),
-      body: navindex == 0 ? MyHomePage() : Placeholder(),
+      body: _pages.elementAt(navindex),
       bottomNavigationBar: BottomNavigationBar(
         items: [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: "Home",
           ),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.favorite), label: "Favorites"),
           BottomNavigationBarItem(
             icon: Icon(Icons.account_circle),
             label: "Profile",
