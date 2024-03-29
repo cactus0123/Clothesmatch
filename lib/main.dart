@@ -1,4 +1,5 @@
 import 'package:clothesmatch/Pages/home_page.dart';
+import 'package:clothesmatch/Pages/profile_page.dart';
 import 'package:english_words/english_words.dart';
 import 'package:clothesmatch/Pages/favorite_page.dart';
 import 'package:flutter/material.dart';
@@ -66,7 +67,7 @@ class _LandingPageState extends State<LandingPage> {
   final _pages = [
     MyHomePage(),
     FavoritesPage(),
-    Placeholder(),
+    Profile(),
   ];
   @override
   Widget build(BuildContext context) {
