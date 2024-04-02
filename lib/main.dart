@@ -67,7 +67,7 @@ class _LandingPageState extends State<LandingPage> {
   final _pages = [
     MyHomePage(),
     FavoritesPage(),
-    Profile(),
+    Profile()
   ];
   @override
   Widget build(BuildContext context) {

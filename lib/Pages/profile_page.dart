@@ -30,7 +30,7 @@ class Profile extends StatelessWidget {
                   children: <Widget>[
                     CircleAvatar(
                       radius: 50,
-                      backgroundImage: AssetImage('assets/images/profile.jpg'),
+                      backgroundImage: NetworkImage('https://assets-global.website-files.com/6586ad1766809383c71cd41e/65890a233344f1816429ec35_National-Flower-Day.jpeg'),
                     ),
                     SizedBox(height: 10),
                     Text(
@@ -41,7 +41,18 @@ class Profile extends StatelessWidget {
                       ),
                     ),
                     SizedBox(height: 5),
-                  ]))
-        ]));
-  }
-}
+                    Text(
+                      '@johnnydoe',
+                      style: TextStyle(
+                        fontSize: 18,
+                        color: Colors.white,
+                      ),
+                    ),
+                    ]        
+        )
+                  
+
+    )] )
+  );
+  
+}}
