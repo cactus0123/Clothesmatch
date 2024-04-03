@@ -71,9 +71,6 @@ class _LandingPageState extends State<LandingPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Clothesmatch"),
-      ),
       body: _pages.elementAt(navindex),
       bottomNavigationBar: BottomNavigationBar(
         items: [
