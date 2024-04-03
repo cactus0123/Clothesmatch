@@ -1,21 +1,38 @@
+import 'package:clothesmatch/Components/card_swipe.dart';
 import 'package:clothesmatch/main.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../Components/big_card.dart';
 
 class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var appState = context.watch<MyAppState>();
-    var pair = appState.current;
 
-    return Scaffold(
+    return CardSwipe(
+        onSwipeRight: (() => appState.swipedRight()),
+        onSwipeLeft: (() => appState.getNext()));
+  }
+}
+    
+    
+    /*
+    Scaffold(
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('A random cool idea:'),
-            BigCard(pair: pair),
+            Dismissible(
+                key: Key(pair.toString()),
+                onDismissed: (direction) {
+                  if (direction == DismissDirection.startToEnd) {
+                    appState.togglefavorite();
+                    appState.getNext();
+                  } else {
+                    appState.getNext();
+                  }
+                },
+                child: BigCard(pair: pair)),
+            
             Row(
               mainAxisSize: MainAxisSize.min,
               children: [
@@ -36,9 +53,11 @@ class MyHomePage extends StatelessWidget {
                 ),
               ],
             ),
+            
           ],
         ),
       ),
     );
   }
 }
+*/
