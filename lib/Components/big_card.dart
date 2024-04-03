@@ -37,18 +37,3 @@ class BigCard extends StatelessWidget {
     );
   }
 }
-/*
-child: Scaffold(
-            body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                pair.asPascalCase,
-                style: style,
-                semanticsLabel: "${pair.first} ${pair.second}",
-              ),
-            ],
-          ),
-        )),
-        */

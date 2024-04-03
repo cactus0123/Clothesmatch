@@ -46,6 +46,11 @@ class MyAppState extends ChangeNotifier {
     notifyListeners();
   }
 
+  void swipedRight() {
+    togglefavorite();
+    getNext();
+  }
+
   Scaffold centerPage(Widget element) {
     return Scaffold(
       body: Center(
@@ -71,6 +76,9 @@ class _LandingPageState extends State<LandingPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text("Clothesmatch"),
+      ),
       body: _pages.elementAt(navindex),
       bottomNavigationBar: BottomNavigationBar(
         items: [
