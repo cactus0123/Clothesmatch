@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Profile extends StatelessWidget {
   const Profile({super.key});
@@ -9,8 +10,16 @@ class Profile extends StatelessWidget {
         appBar: AppBar(
             backgroundColor: Colors.purple,
             title: Center(
-              child: const Text('My Profile'),
-            )),
+              child: Text(
+                'My Profile',
+               style: GoogleFonts.josefinSans(
+                textStyle: TextStyle(
+                  color: Colors.white,
+                )
+               ),
+              ),
+            ),
+            ),
         body: ListView(children: <Widget>[
           Container(
               height: 250,
