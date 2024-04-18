@@ -30,7 +30,8 @@ class Profile extends StatelessWidget {
                   children: <Widget>[
                     CircleAvatar(
                       radius: 50,
-                      backgroundImage: NetworkImage('https://assets-global.website-files.com/6586ad1766809383c71cd41e/65890a233344f1816429ec35_National-Flower-Day.jpeg'),
+                      backgroundImage: NetworkImage(
+                          'https://assets-global.website-files.com/6586ad1766809383c71cd41e/65890a233344f1816429ec35_National-Flower-Day.jpeg'),
                     ),
                     SizedBox(height: 10),
                     Text(
@@ -48,11 +49,14 @@ class Profile extends StatelessWidget {
                         color: Colors.white,
                       ),
                     ),
-                    ]        
-        )
-                  
-
-    )] )
-  );
-  
-}}
+                  ]))
+        ]),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            Placeholder();
+          },
+          backgroundColor: Colors.purple,
+          child: Icon(Icons.add),
+        ));
+  }
+}

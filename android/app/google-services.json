@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "446824727271",
+    "project_id": "new-afg",
+    "storage_bucket": "new-afg.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:446824727271:android:9d720929722bbf582f1842",
+        "android_client_info": {
+          "package_name": "com.example.clothesmatch"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA0MlfVXPt8DSNn3Ly4HEbYHcLnsH-pQ6w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

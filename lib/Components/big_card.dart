@@ -1,13 +1,15 @@
+import 'package:clothesmatch/Services/database_service.dart';
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
 
 class BigCard extends StatelessWidget {
-  const BigCard({
+  BigCard({
     super.key,
     required this.pair,
   });
 
   final WordPair pair;
+  final DatabaseService databaseService = DatabaseService();
 
   @override
   Widget build(BuildContext context) {
@@ -26,14 +28,45 @@ class BigCard extends StatelessWidget {
                     'https://m.media-amazon.com/images/I/51IVI1u5mFL._AC_UY1000_.jpg'),
                 width: MediaQuery.of(context).size.width * 0.85,
                 height: MediaQuery.of(context).size.height * 0.6),
-            Text(
-              pair.asPascalCase,
-              style: style,
-              semanticsLabel: "${pair.first} ${pair.second}",
-            ),
+            StreamBuilder(
+              stream: databaseService.getListings(),
+              builder: (context, snapshot) {
+                if (snapshot.hasError) {
+                  return Text('Error: ${snapshot.error}');
+                }
+                switch (snapshot.connectionState) {
+                  case ConnectionState.waiting:
+                    return Text('Loading...');
+                  default:
+                    if (snapshot.hasData) {
+                      List listings = snapshot.data?.docs ?? [];
+                      print(listings);
+                      if (listings.isEmpty) {
+                        return Text('No listings found');
+                      }
+                      return Text("hi");
+                    } else {
+                      return Text('No data');
+                    }
+                }
+              },
+            )
           ],
         ),
       ),
     );
   }
 }
+
+/*
+            StreamBuilder(
+                stream: databaseService.getListings(),
+                builder: (context, snapshot) {
+                  List listings = snapshot.data?.docs ?? [];
+                  if (listings.isEmpty) {
+                    return Text('No listings found');
+                  }
+                  print(listings);
+                  return Text("hi");
+                })
+*/

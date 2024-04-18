@@ -1,11 +1,19 @@
 import 'package:clothesmatch/Pages/home_page.dart';
 import 'package:clothesmatch/Pages/profile_page.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:english_words/english_words.dart';
 import 'package:clothesmatch/Pages/favorite_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  FirebaseFirestore.instance.settings = const Settings(
+    persistenceEnabled: false,
+  );
   runApp(MyApp());
 }
 
@@ -69,11 +77,7 @@ class LandingPage extends StatefulWidget {
 
 class _LandingPageState extends State<LandingPage> {
   var navindex = 0;
-  final _pages = [
-    MyHomePage(),
-    FavoritesPage(),
-    Profile()
-  ];
+  final _pages = [MyHomePage(), FavoritesPage(), Profile()];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
