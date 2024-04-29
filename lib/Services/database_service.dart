@@ -22,4 +22,8 @@ class DatabaseService {
   Future<void> addListing(Listing listing) async {
     await _listingsRef.add(listing);
   }
+
+  void updateListing(String id, Listing listing) {
+    _listingsRef.doc(id).set(listing);
+  }
 }

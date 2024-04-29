@@ -1,8 +1,11 @@
+// ignore_for_file: file_names
+
 class Listing {
   String color;
   String description;
+  String image;
   String name;
-  String price;
+  double price;
   String size;
   String username;
   bool sold;
@@ -10,6 +13,7 @@ class Listing {
   Listing({
     required this.color,
     required this.description,
+    required this.image,
     required this.name,
     required this.price,
     required this.size,
@@ -22,8 +26,9 @@ class Listing {
       : this(
             color: json['color'] as String,
             description: json['description'] as String,
+            image: json['image'] as String,
             name: json['name'] as String,
-            price: json['price'] as String,
+            price: json['price'] as double,
             size: json['size'] as String,
             username: json['username'] as String,
             sold: json['sold'] as bool);
@@ -32,14 +37,16 @@ class Listing {
   Listing copyWith(
       {String? color,
       String? description,
+      String? image,
       String? name,
-      String? price,
+      double? price,
       String? size,
       String? username,
       bool? sold}) {
     return Listing(
       color: color ?? this.color,
       description: description ?? this.description,
+      image: image ?? this.image,
       name: name ?? this.name,
       price: price ?? this.price,
       size: size ?? this.size,
@@ -53,6 +60,7 @@ class Listing {
     return {
       'color': color,
       'description': description,
+      'image': image,
       'name': name,
       'price': price,
       'size': size,

@@ -30,6 +30,7 @@ class MyApp extends StatelessWidget {
           useMaterial3: true,
           colorScheme: ColorScheme.fromSeed(
               seedColor: Color.fromARGB(255, 156, 142, 219)),
+          primarySwatch: Colors.purple,
         ),
         home: LandingPage(),
       ),

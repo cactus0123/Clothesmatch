@@ -1,3 +1,4 @@
+import 'package:clothesmatch/Pages/upload_page.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -8,18 +9,17 @@ class Profile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-            backgroundColor: Colors.purple,
-            title: Center(
-              child: Text(
-                'My Profile',
-               style: GoogleFonts.josefinSans(
-                textStyle: TextStyle(
-                  color: Colors.white,
-                )
-               ),
-              ),
+          backgroundColor: Colors.purple,
+          title: Center(
+            child: Text(
+              'My Profile',
+              style: GoogleFonts.josefinSans(
+                  textStyle: TextStyle(
+                color: Colors.white,
+              )),
             ),
-            ),
+          ),
+        ),
         body: ListView(children: <Widget>[
           Container(
               height: 250,
@@ -62,7 +62,8 @@ class Profile extends StatelessWidget {
         ]),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
-            Placeholder();
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => UploadPage()));
           },
           backgroundColor: Colors.purple,
           child: Icon(Icons.add),

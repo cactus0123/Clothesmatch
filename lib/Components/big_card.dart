@@ -1,6 +1,8 @@
+import 'package:clothesmatch/Model/listing.dart';
 import 'package:clothesmatch/Services/database_service.dart';
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class BigCard extends StatelessWidget {
   BigCard({
@@ -25,31 +27,29 @@ class BigCard extends StatelessWidget {
           children: [
             Image(
                 image: NetworkImage(
-                    'https://m.media-amazon.com/images/I/51IVI1u5mFL._AC_UY1000_.jpg'),
+                    'https://firebasestorage.googleapis.com/v0/b/new-afg.appspot.com/o/red_shirt.jpg?alt=media&token=d38da817-0f1a-4a58-994d-91db409520e2'),
                 width: MediaQuery.of(context).size.width * 0.85,
                 height: MediaQuery.of(context).size.height * 0.6),
-            StreamBuilder(
-              stream: databaseService.getListings(),
-              builder: (context, snapshot) {
-                if (snapshot.hasError) {
-                  return Text('Error: ${snapshot.error}');
-                }
-                switch (snapshot.connectionState) {
-                  case ConnectionState.waiting:
-                    return Text('Loading...');
-                  default:
-                    if (snapshot.hasData) {
-                      List listings = snapshot.data?.docs ?? [];
-                      print(listings);
-                      if (listings.isEmpty) {
-                        return Text('No listings found');
-                      }
-                      return Text("hi");
-                    } else {
-                      return Text('No data');
+            Expanded(
+              child: StreamBuilder(
+                  stream: databaseService.getListings(),
+                  builder: (context, snapshot) {
+                    List listings = snapshot.data?.docs ?? [];
+                    if (listings.isEmpty) {
+                      return Text('No listings found');
                     }
-                }
-              },
+                    return ListView.builder(
+                      itemCount: listings.length,
+                      itemBuilder: (context, index) {
+                        Listing listing = listings[index].data();
+                        return Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(listing.name,
+                              style: style.merge(GoogleFonts.josefinSans())),
+                        );
+                      },
+                    );
+                  }),
             )
           ],
         ),
@@ -57,16 +57,3 @@ class BigCard extends StatelessWidget {
     );
   }
 }
-
-/*
-            StreamBuilder(
-                stream: databaseService.getListings(),
-                builder: (context, snapshot) {
-                  List listings = snapshot.data?.docs ?? [];
-                  if (listings.isEmpty) {
-                    return Text('No listings found');
-                  }
-                  print(listings);
-                  return Text("hi");
-                })
-*/
