@@ -7,6 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
+import 'package:google_fonts/google_fonts.dart';
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -25,7 +27,7 @@ class MyApp extends StatelessWidget {
     return ChangeNotifierProvider(
       create: (context) => MyAppState(),
       child: MaterialApp(
-        title: 'Clothesmatch',
+        title: "Clothesmatch",
         theme: ThemeData(
           useMaterial3: true,
           colorScheme: ColorScheme.fromSeed(
@@ -83,7 +85,15 @@ class _LandingPageState extends State<LandingPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Clothesmatch"),
+        title: Text(
+          'Clothesmatch',
+          style: GoogleFonts.josefinSans(
+                textStyle: TextStyle(
+                  fontWeight: FontWeight.w200,
+                  fontSize: 48,
+                )
+               ),
+          ),
       ),
       body: _pages.elementAt(navindex),
       bottomNavigationBar: BottomNavigationBar(

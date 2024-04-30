@@ -3,6 +3,7 @@ import 'package:clothesmatch/Services/database_service.dart';
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class BigCard extends StatelessWidget {
   BigCard({

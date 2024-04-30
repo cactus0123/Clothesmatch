@@ -9,13 +9,14 @@ class Profile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.purple,
+          backgroundColor: Color.fromARGB(255, 152, 89, 220),
           title: Center(
             child: Text(
               'My Profile',
               style: GoogleFonts.josefinSans(
                   textStyle: TextStyle(
                 color: Colors.white,
+                  fontWeight: FontWeight.w500,
               )),
             ),
           ),
@@ -45,10 +46,13 @@ class Profile extends StatelessWidget {
                     SizedBox(height: 10),
                     Text(
                       'John Doe',
-                      style: TextStyle(
-                        fontSize: 22,
-                        color: Colors.white,
-                      ),
+                      style: GoogleFonts.josefinSans(
+                      textStyle: TextStyle(
+                      fontWeight: FontWeight.w400,
+                      color: Colors.white,
+                      fontSize: 20,
+                )
+               ),
                     ),
                     SizedBox(height: 5),
                     Text(
@@ -58,15 +62,11 @@ class Profile extends StatelessWidget {
                         color: Colors.white,
                       ),
                     ),
-                  ]))
-        ]),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            Navigator.push(
-                context, MaterialPageRoute(builder: (context) => UploadPage()));
-          },
-          backgroundColor: Colors.purple,
-          child: Icon(Icons.add),
-        ));
-  }
-}
+                    ]        
+        )
+                  
+
+    )] )
+  );
+  
+}}
