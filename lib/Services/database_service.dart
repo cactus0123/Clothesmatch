@@ -15,6 +15,11 @@ class DatabaseService {
             toFirestore: (listing, _) => listing.toJson());
   }
 
+  Future<List<Listing>> getAllListings() async {
+    final snapshot = await _listingsRef.get();
+    return snapshot.docs.map((doc) => doc.data()).toList().cast<Listing>();
+  }
+
   Stream<QuerySnapshot> getListings() {
     return _listingsRef.snapshots();
   }

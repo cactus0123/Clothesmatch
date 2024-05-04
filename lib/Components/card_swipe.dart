@@ -1,8 +1,7 @@
 import 'package:clothesmatch/Components/big_card.dart';
-import 'package:clothesmatch/main.dart';
+import 'package:clothesmatch/Model/listing.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_card_swiper/flutter_card_swiper.dart';
-import 'package:provider/provider.dart';
 import 'package:clothesmatch/Services/database_service.dart';
 
 class CardSwipe extends StatefulWidget {
@@ -20,9 +19,8 @@ class CardSwipe extends StatefulWidget {
 
 class _CardSwipeState extends State<CardSwipe> {
   final CardSwiperController controller = CardSwiperController();
-
   final DatabaseService databaseService = DatabaseService();
-  late List listings;
+  List<Listing>? listings;
 
   @override
   void dispose() {
@@ -31,35 +29,56 @@ class _CardSwipeState extends State<CardSwipe> {
   }
 
   @override
+  void initState() {
+    super.initState();
+    loadListings();
+  }
+
+  void loadListings() async {
+    List<Listing> docs = await databaseService.getAllListings();
+    setState(() {
+      listings = docs;
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
-    var appState = context.watch<MyAppState>();
-    return Scaffold(
-      body: SafeArea(
-        child: Column(
-          children: [
-            Flexible(
-              child: CardSwiper(
-                controller: controller,
-                cardsCount: 2,
-                onSwipe: _onSwipe,
-                onUndo: _onUndo,
-                numberOfCardsDisplayed: 2,
-                backCardOffset: const Offset(40, 40),
-                padding: const EdgeInsets.all(24.0),
-                cardBuilder: (
-                  context,
-                  index,
-                  horizontalThresholdPercentage,
-                  verticalThresholdPercentage,
-                ) {
-                  return BigCard(pair: appState.current);
-                },
+    if (listings == null) {
+      return const Center(
+        child: CircularProgressIndicator(),
+      );
+    } else {
+      return Scaffold(
+        body: SafeArea(
+          child: Column(
+            children: [
+              Flexible(
+                child: CardSwiper(
+                  controller: controller,
+                  cardsCount: listings!.length,
+                  onSwipe: _onSwipe,
+                  onUndo: _onUndo,
+                  numberOfCardsDisplayed: 2,
+                  backCardOffset: const Offset(40, 40),
+                  padding: const EdgeInsets.all(24.0),
+                  cardBuilder: (
+                    context,
+                    index,
+                    horizontalThresholdPercentage,
+                    verticalThresholdPercentage,
+                  ) {
+                    Listing listing = listings![index];
+                    return BigCard(
+                      listing: listing,
+                    );
+                  },
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
-      ),
-    );
+      );
+    }
   }
 
   bool _onSwipe(
@@ -87,7 +106,7 @@ class _CardSwipeState extends State<CardSwipe> {
     CardSwiperDirection direction,
   ) {
     debugPrint(
-      'The card $currentIndex was undod from the ${direction.name}',
+      'The card $currentIndex was undid from the ${direction.name}',
     );
     return true;
   }
