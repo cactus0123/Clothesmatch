@@ -60,7 +60,9 @@ class _CardSwipeState extends State<CardSwipe> {
                   cardsCount: listings!.length,
                   onSwipe: (previousIndex, currentIndex, direction) {
                     _onSwipe(previousIndex, currentIndex, direction);
-                    addListing(listings![previousIndex]);
+                    if (direction == CardSwiperDirection.right) {
+                      addListing(listings![previousIndex]);
+                    }
                     return true;
                   },
                   onUndo: _onUndo,
