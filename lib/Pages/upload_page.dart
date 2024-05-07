@@ -1,6 +1,6 @@
 import 'dart:io';
-import 'package:clothesmatch/Pages/profile_page.dart';
 import 'package:clothesmatch/Services/database_service.dart';
+import 'package:clothesmatch/main.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
@@ -227,7 +227,7 @@ class _UploadPageState extends State<UploadPage> {
                 onPressed: () async {
                   await uploadImage();
                   await uploadItem().then((value) => Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => Profile())));
+                      MaterialPageRoute(builder: (context) => MyApp())));
                 },
                 style: ElevatedButton.styleFrom(
                   minimumSize: Size(double.infinity, 50),

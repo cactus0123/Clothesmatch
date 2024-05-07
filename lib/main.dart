@@ -1,14 +1,13 @@
 import 'package:clothesmatch/Pages/home_page.dart';
 import 'package:clothesmatch/Pages/profile_page.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:english_words/english_words.dart';
 import 'package:clothesmatch/Pages/favorite_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'Model/listing.dart';
 import 'firebase_options.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -41,25 +40,20 @@ class MyApp extends StatelessWidget {
 }
 
 class MyAppState extends ChangeNotifier {
-  var current = WordPair.random();
-
   void getNext() {
-    current = WordPair.random();
     notifyListeners();
   }
 
-  var favorites = <WordPair>[];
-  void togglefavorite() {
-    if (favorites.contains(current)) {
-      favorites.remove(current);
-    } else {
-      favorites.add(current);
+  var favorites = [];
+  void togglefavorite(Listing listing) {
+    if (!(favorites.contains(listing))) {
+      print(favorites);
+      favorites.add(listing);
     }
     notifyListeners();
   }
 
   void swipedRight() {
-    togglefavorite();
     getNext();
   }
 
@@ -88,12 +82,11 @@ class _LandingPageState extends State<LandingPage> {
         title: Text(
           'Clothesmatch',
           style: GoogleFonts.josefinSans(
-                textStyle: TextStyle(
-                  fontWeight: FontWeight.w200,
-                  fontSize: 48,
-                )
-               ),
-          ),
+              textStyle: TextStyle(
+            fontWeight: FontWeight.w200,
+            fontSize: 48,
+          )),
+        ),
       ),
       body: _pages.elementAt(navindex),
       bottomNavigationBar: BottomNavigationBar(

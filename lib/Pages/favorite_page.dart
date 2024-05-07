@@ -19,17 +19,20 @@ class FavoritesPage extends StatelessWidget {
         title: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(Icons.favorite_border, color: Color.fromARGB(255, 72, 15, 163)), // Heart icon in purple
+            Icon(Icons.favorite_border,
+                color:
+                    Color.fromARGB(255, 72, 15, 163)), // Heart icon in purple
             SizedBox(width: 8), // Add some spacing
             Text(
               'Matched',
-              style: GoogleFonts.montserrat (
-            textStyle: TextStyle(
-              color: Color.fromARGB(255, 72, 15, 163), // Static text "Matched" in purple
-              fontWeight: FontWeight.w400,
-              fontSize: 22,
-            ),
-          ),
+              style: GoogleFonts.montserrat(
+                textStyle: TextStyle(
+                  color: Color.fromARGB(
+                      255, 72, 15, 163), // Static text "Matched" in purple
+                  fontWeight: FontWeight.w400,
+                  fontSize: 22,
+                ),
+              ),
             ),
           ],
         ),
@@ -37,19 +40,19 @@ class FavoritesPage extends StatelessWidget {
       body: ListView(
         children: appState.favorites
             .map(
-              (pair) => Padding(
+              (listing) => Padding(
                 padding: const EdgeInsets.symmetric(vertical: 8.0),
                 child: ElevatedButton(
                   onPressed: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => ContactPage(item: pair.asPascalCase),
+                        builder: (context) => ContactPage(item: listing.name),
                       ),
                     );
                   },
                   child: ListTile(
-                    title: Text(pair.asLowerCase),
+                    title: Text(listing.name),
                     leading: Icon(Icons.favorite),
                   ),
                 ),
@@ -80,94 +83,91 @@ class ContactPage extends StatelessWidget {
           ),
         ),
       ),
-      body: ListView(children: <Widget>[
+      body: ListView(
+        children: <Widget>[
           Container(
             color: Color.fromARGB(255, 92, 59, 170),
             padding: EdgeInsets.all(7.0),
-              margin: EdgeInsets.only(left:60.0,right:60.0),
+            margin: EdgeInsets.only(left: 60.0, right: 60.0),
             alignment: Alignment.center,
             height: 370,
             child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children:[
-                    Container(
-                      margin: EdgeInsets.only(top: 10.0),
-                    child: Image(
-                      image: NetworkImage('https://assets-global.website-files.com/6586ad1766809383c71cd41e/65890a233344f1816429ec35_National-Flower-Day.jpeg'),
-                      height: 270,
-                      width: 400,
-                    ),
-                    ),
-                  SizedBox(height: 8),
-                   Text(item,
-                   style: GoogleFonts.josefinSans(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  margin: EdgeInsets.only(top: 10.0),
+                  child: Image(
+                    image: NetworkImage(
+                        'https://assets-global.website-files.com/6586ad1766809383c71cd41e/65890a233344f1816429ec35_National-Flower-Day.jpeg'),
+                    height: 270,
+                    width: 400,
+                  ),
+                ),
+                SizedBox(height: 8),
+                Text(
+                  item,
+                  style: GoogleFonts.josefinSans(
                       textStyle: TextStyle(
-                      fontWeight: FontWeight.w400,
-                      color: Colors.white,
-                      fontSize: 30,
-                )
-               ),
-                      
-                    ),
-                  ],
-            
+                    fontWeight: FontWeight.w400,
+                    color: Colors.white,
+                    fontSize: 30,
+                  )),
+                ),
+              ],
             ),
-              ),
-              Container(
+          ),
+          Container(
             color: Color.fromARGB(255, 198, 185, 230),
             padding: EdgeInsets.all(7.0),
-              margin: EdgeInsets.only(left:60.0,right:60.0, top:30.0),
+            margin: EdgeInsets.only(left: 60.0, right: 60.0, top: 30.0),
             alignment: Alignment.center,
             height: 250,
             child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children:[
-                    Container(
-                      margin: EdgeInsets.only(top: 10.0),
-                    ),
-                  SizedBox(height: 8),
-                   Text(item,
-                   style: GoogleFonts.josefinSans(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  margin: EdgeInsets.only(top: 10.0),
+                ),
+                SizedBox(height: 8),
+                Text(
+                  item,
+                  style: GoogleFonts.josefinSans(
                       textStyle: TextStyle(
-                      fontWeight: FontWeight.w400,
-                      color: Colors.black,
-                      fontSize: 30,
-                )
-               ),
-                      
-                    ),
-                  ],
-            
+                    fontWeight: FontWeight.w400,
+                    color: Colors.black,
+                    fontSize: 30,
+                  )),
+                ),
+              ],
             ),
-              ),
-              Container(
+          ),
+          Container(
             color: Color.fromARGB(255, 198, 185, 230),
             padding: EdgeInsets.all(7.0),
-              margin: EdgeInsets.only(left:60.0,right:60.0, top:30.0, bottom:30.0),
+            margin: EdgeInsets.only(
+                left: 60.0, right: 60.0, top: 30.0, bottom: 30.0),
             alignment: Alignment.center,
             height: 200,
             child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children:[
-                    Container(
-                      margin: EdgeInsets.only(top: 10.0),
-                    ),
-                  SizedBox(height: 8),
-                   Text(item,
-                   style: GoogleFonts.josefinSans(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  margin: EdgeInsets.only(top: 10.0),
+                ),
+                SizedBox(height: 8),
+                Text(
+                  item,
+                  style: GoogleFonts.josefinSans(
                       textStyle: TextStyle(
-                      fontWeight: FontWeight.w400,
-                      color: Colors.black,
-                      fontSize: 30,
-                )
-               ),
-                      
-                    ),
-                  ],
-            
+                    fontWeight: FontWeight.w400,
+                    color: Colors.black,
+                    fontSize: 30,
+                  )),
+                ),
+              ],
             ),
-              ),
-      ],
+          ),
+        ],
       ),
     );
   }

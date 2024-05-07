@@ -21,6 +21,17 @@ class Listing {
     required this.sold,
   });
 
+  //override the == operator to compare two listings
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+
+    return other is Listing && other.name == name;
+  }
+
+  @override
+  int get hashCode => name.hashCode;
+
   // This method is used to convert the data from the database to a map
   Listing.fromJson(Map<String, Object?> json)
       : this(

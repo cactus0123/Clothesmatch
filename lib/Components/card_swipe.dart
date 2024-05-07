@@ -1,8 +1,10 @@
 import 'package:clothesmatch/Components/big_card.dart';
 import 'package:clothesmatch/Model/listing.dart';
+import 'package:clothesmatch/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_card_swiper/flutter_card_swiper.dart';
 import 'package:clothesmatch/Services/database_service.dart';
+import 'package:provider/provider.dart';
 
 class CardSwipe extends StatefulWidget {
   final Function() onSwipeRight;
@@ -56,7 +58,11 @@ class _CardSwipeState extends State<CardSwipe> {
                 child: CardSwiper(
                   controller: controller,
                   cardsCount: listings!.length,
-                  onSwipe: _onSwipe,
+                  onSwipe: (previousIndex, currentIndex, direction) {
+                    _onSwipe(previousIndex, currentIndex, direction);
+                    addListing(listings![previousIndex]);
+                    return true;
+                  },
                   onUndo: _onUndo,
                   numberOfCardsDisplayed: 2,
                   backCardOffset: const Offset(40, 40),
@@ -79,6 +85,11 @@ class _CardSwipeState extends State<CardSwipe> {
         ),
       );
     }
+  }
+
+  void addListing(Listing listing) {
+    var appState = context.read<MyAppState>();
+    appState.togglefavorite(listing);
   }
 
   bool _onSwipe(
