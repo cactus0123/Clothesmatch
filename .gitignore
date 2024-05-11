@@ -10,6 +10,9 @@
 .svn/
 migrate_working_dir/
 
+google-services.json
+lib/pages/sign_in.dart
+
 # IntelliJ related
 *.iml
 *.ipr

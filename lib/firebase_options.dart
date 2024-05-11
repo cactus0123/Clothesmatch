@@ -66,6 +66,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '446824727271',
     projectId: 'new-afg',
     storageBucket: 'new-afg.appspot.com',
+    iosClientId: '446824727271-2uao39u1u1u0jkgi43ca1oveuoikrrha.apps.googleusercontent.com',
     iosBundleId: 'com.example.clothesmatch',
   );
 
@@ -75,6 +76,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '446824727271',
     projectId: 'new-afg',
     storageBucket: 'new-afg.appspot.com',
+    iosClientId: '446824727271-bblf3kcqeba16se934mrh6snpnblqci4.apps.googleusercontent.com',
     iosBundleId: 'com.example.clothesmatch.RunnerTests',
   );
 }

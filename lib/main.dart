@@ -44,7 +44,7 @@ class MyAppState extends ChangeNotifier {
     notifyListeners();
   }
 
-  var favorites = [];
+  List<Listing> favorites = [];
   void togglefavorite(Listing listing) {
     if (!(favorites.contains(listing))) {
       print(favorites);

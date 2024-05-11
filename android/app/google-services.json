@@ -12,7 +12,12 @@
           "package_name": "com.example.clothesmatch"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "446824727271-tkb8e0bda3dkhqs4vr3avpo204nhfmbc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyA0MlfVXPt8DSNn3Ly4HEbYHcLnsH-pQ6w"
@@ -20,7 +25,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "446824727271-tkb8e0bda3dkhqs4vr3avpo204nhfmbc.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "446824727271-2uao39u1u1u0jkgi43ca1oveuoikrrha.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.clothesmatch"
+              }
+            }
+          ]
         }
       }
     }
